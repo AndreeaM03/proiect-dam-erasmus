@@ -16,4 +16,4 @@ Aplicația permite colaborarea între echipele de coordonare Erasmus, participan
 
 - Rezolvat erorile de runtime JPA (ex: Project ID, Tranche value).
 
-- Creat primul DTO (ApplicationRequestDTO) și am refactorizat MobilityController și MobilityService pentru a-l folosi.
+- Creat primul DTO (ApplicationRequestDTO) și refactorizat MobilityController și MobilityService pentru a-l folosi.
