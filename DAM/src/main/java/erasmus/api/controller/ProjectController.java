@@ -3,22 +3,21 @@ package erasmus.api.controller;
 import erasmus.api.dto.ProjectCreationDTO;
 import erasmus.domain.model.Project;
 import erasmus.service.ProjectService;
-// TODO: import erasmus.api.dto.ProjectCreationDTO; // cand faci DTO-urile
+// TODO: import erasmus.api.dto.ProjectCreationDTO; // cand e gata DTO-urile
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RestController // anunta Spring ca asta e un controller REST
-@RequestMapping("/api/projects") // toate endopint-urile de aici incep cu /api/projects
+@RestController
+@RequestMapping("/api/projects")
 public class ProjectController {
 
     @Autowired
-    private ProjectService projectService; // injecteaza serviciul
+    private ProjectService projectService;
 
     /**
-     * Endpoint pentru UC1: Crearea unui proiect.
-     * Primeste datele prin HTTP POST.
+     * Crearea unui proiect
      */
     @PostMapping
     public ResponseEntity<Project> createProject(
@@ -36,16 +35,15 @@ public class ProjectController {
     }
 
     /**
-     * Endpoint pentru a gasi un proiect dupa ID.
+     * gaseste proiect dupa ID.
      */
     @GetMapping("/{projectId}")
     public ResponseEntity<Project> getProjectById(@PathVariable String projectId) {
-        // Project project = projectRepository.findById(projectId); // Ar trebui sa fie
-        // in service
+        // Project project = projectRepository.findById(projectId); // Ar trebui sa fie in service
         // return ResponseEntity.ok(project);
 
-        return ResponseEntity.ok(new Project()); // Simulare
+        return ResponseEntity.ok(new Project()); // simulare
     }
 
-    // TODO: de adaugat endpoint-uri si pentru UC2 (createActivity, assignUser)
+    // TODO: de adaugat endpoint-uri si pt createActivity, assignUser
 }

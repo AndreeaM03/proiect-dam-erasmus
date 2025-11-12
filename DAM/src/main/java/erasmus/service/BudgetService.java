@@ -4,8 +4,8 @@ import erasmus.domain.model.CountryBudget;
 import erasmus.domain.model.Expense;
 import erasmus.domain.model.Mobility;
 import erasmus.domain.repository.CountryBudgetRepository;
-import erasmus.domain.repository.ExpenseRepository; // ai nevoie si de asta
-import erasmus.domain.repository.MobilityRepository; // si de asta
+import erasmus.domain.repository.ExpenseRepository;
+import erasmus.domain.repository.MobilityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,15 +18,15 @@ public class BudgetService {
     private CountryBudgetRepository countryBudgetRepository;
     
     @Autowired
-    private MobilityRepository mobilityRepository; // ca sa luam mobilitatile aprobate
+    private MobilityRepository mobilityRepository; // mobilitatile aprobate
 
     @Autowired
-    private ExpenseRepository expenseRepository; // ca sa luam cheltuielile
+    private ExpenseRepository expenseRepository; // cheltuielile
     
-    // TODO: ai nevoie si de TrancheRepository
+    // TODO: trb si de TrancheRepository
 
     /**
-     * Regula 103: Calculeaza si actualizeaza bugetul ramas pentru o tara.
+     * calculeaza si actualizeaza bugetul ramas pentru o tara
      * remainingEur = capTotalEur − suma(mobilitati aprobate + cheltuieli + transe platite)
      */
     public void calculateRemainingBudget(String country) {
@@ -34,6 +34,7 @@ public class BudgetService {
         CountryBudget budget = countryBudgetRepository.findByCountry(country)
                 .orElseThrow(() -> new RuntimeException("Bugetul nu a fost gasit"));
 
+        // TODO DE VAZUT
         // 1. Ia toate mobilitatile aprobate pt tara asta
         // Asta e complicat, trebuie sa gasesti mobilitatile dupa tara
         // (prin University) care au status "Approved"
@@ -46,7 +47,6 @@ public class BudgetService {
         // ...
 
         double totalConsumed = 0;
-        // ... iteram si adunam totalConsumed ...
 
         double remaining = budget.getCapTotalEur() - totalConsumed;
         budget.setRemainingEur(remaining);
@@ -55,8 +55,7 @@ public class BudgetService {
     }
 
     /**
-     * Regula 83/98: Verifica daca o noua cheltuiala/mobilitate incape in buget.
-     * Folosit de AllocationService inainte de aprobarea finala (UC7).
+     * verifica daca o noua cheltuiala/mobilitate incape in buget
      */
     public boolean canAffordMobility(String country, double amountToSpend) {
         CountryBudget budget = countryBudgetRepository.findByCountry(country)
@@ -66,7 +65,6 @@ public class BudgetService {
     }
 
     /**
-     * Metoda chemata de alte servicii (MobilityService, ScholarshipService)
      * cand o cheltuiala noua e aprobata, ca sa scada din buget.
      */
     public void updateUsedBudget(String country, double amountSpent) {

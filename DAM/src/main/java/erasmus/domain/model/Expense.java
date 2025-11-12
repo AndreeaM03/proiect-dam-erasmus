@@ -12,7 +12,6 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // atributele din uml
     private double amountEur;
     private String description;
 

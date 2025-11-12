@@ -6,14 +6,12 @@ import lombok.Data;
 @Data
 public class ApplicationRequestDTO {
 
-    // Astea sunt datele pe care le trimite frontend-ul
+    // datele pe care le trimite frontend-ul
     
-    private String studentId; // ID-ul studentului care aplica
-    private String universityId; // ID-ul universitatii la care aplica
+    private String studentId;
+    private String universityId;
     
-    private MobilityType mobilityType; // SHORT_DURATION sau LONG_DURATION
-    private int duration; // Numarul de zile (pt scurta) sau luni (pt lunga)
+    private MobilityType mobilityType;
+    private int duration;
     
-    // pot fi adaugate si alte campuri necesare pt formularul de aplicare
-    // de ex: private double academicAverage;
 }

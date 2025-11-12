@@ -20,28 +20,26 @@ public class MobilityController {
     private AllocationService allocationService;
 
     /**
-     * Endpoint pentru UC3.1: Studentul propune o mobilitate
+     * Studentul propune o mobilitate
      * Primeste datele prin HTTP POST.
      */
     @PostMapping
     public ResponseEntity<Mobility> createMobility(
-        @RequestBody ApplicationRequestDTO dto // 2. PRIMESTE DTO-ul
+        @RequestBody ApplicationRequestDTO dto
     ) {
         
         try {
-            // 3. Trimite DTO-ul direct la serviciu
             Mobility newMobility = mobilityService.createMobility(dto);
             return ResponseEntity.ok(newMobility);
             
         } catch (RuntimeException e) {
-            // Daca (de ex) bugetul e depasit, serviciul arunca eroare
-            // return ResponseEntity.badRequest().body(e.getMessage());
-            return ResponseEntity.status(400).build(); // Simulare eroare
+            // daca bugetul e depasit
+            return ResponseEntity.status(400).build();
         }
     }
 
     /**
-     * Endpoint pentru UC7: Coordonatorul aproba alocarea
+     * Coordonatorul aproba alocarea
      */
     @PostMapping("/{mobilityId}/approve")
     public ResponseEntity<Mobility> approveMobility(

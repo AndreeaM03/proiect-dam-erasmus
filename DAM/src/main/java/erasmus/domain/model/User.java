@@ -8,11 +8,11 @@ import erasmus.commons.enums.Role;
 
 @Data
 @Entity
-@Table(name = "users") // "user" e cuvant rezervat in SQL, mai bine "users"
+@Table(name = "users")
 public class User {
 
     @Id
-    private String id; // id-ul din uml
+    private String id;
 
     private String username;
     private Role role;
@@ -22,12 +22,12 @@ public class User {
     private Student student;
 
     // Relatie 1-n: un User (daca e HR) conduce mai multe interviuri
-    // "interviewer" e campul din clasa Interview
+    // "interviewer" e din clasa Interview
     @OneToMany(mappedBy = "interviewer")
     private Set<Interview> conductedInterviews;
 
     // Relatie 1-n: un User (Coordonator) aproba mai multe mobilitati
-    // "approver" e campul din clasa Mobility
+    // "approver" e din clasa Mobility
     @OneToMany(mappedBy = "approver")
     private Set<Mobility> approvedMobilities;
     

@@ -1,6 +1,5 @@
 package erasmus.domain.model;
 
-// Folosim Jakarta pt Spring Boot 3+ (JPA)
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,7 +16,6 @@ public class Project {
     @Id
     private String id;
 
-    // Atribute
     private String title;
     private Date startDate;
     private Date endDate;

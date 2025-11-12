@@ -20,8 +20,6 @@ public class Mobility {
     private Date endDate;
     private Status status;
 
-
-
     // Relatie n-1: mai multe mobilitati apartin unui Student
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false) // cheie straina catre Student

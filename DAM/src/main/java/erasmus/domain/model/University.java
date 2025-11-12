@@ -13,14 +13,14 @@ public class University {
     @Id
     private String id;
 
-    private String country; // pentru a lega logic de CountryBudget
+    private String country;
     private String name;
     private String iban;
     private String address;
 
     // Relatie n-1: Mai multe universitati apartin unui buget de tara
     @ManyToOne
-    @JoinColumn(name = "country_budget_id") // Cheia străină către CountryBudget
+    @JoinColumn(name = "country_budget_id") // Cheia straina către CountryBudget
     private CountryBudget countryBudget;
 
     // Relatie 1-n: o universitate are mai multe locuri

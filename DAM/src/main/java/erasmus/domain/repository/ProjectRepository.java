@@ -9,6 +9,4 @@ import java.util.Optional;
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, String> {
 
-    // findById("string_id") merge de la sine de exemplu
-
 }

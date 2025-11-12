@@ -13,7 +13,7 @@ import erasmus.domain.repository.AssignmentRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional; // important pt UC1
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,27 +27,25 @@ public class ProjectService {
     private CountryBudgetRepository countryBudgetRepository;
 
     @Autowired
-    private UniversityRepository universityRepository; // ai nevoie de repository-ul asta
+    private UniversityRepository universityRepository;
 
     @Autowired
-    private ActivityRepository activityRepository; // si de asta
+    private ActivityRepository activityRepository;
 
     @Autowired
-    private AssignmentRepository assignmentRepository; // si de asta
+    private AssignmentRepository assignmentRepository;
 
     /**
-     * UC1: Creaza tot proiectul (proiect, bugete, universitati)
      * @Transactional asigura ca ori se salveaza tot, ori nimic.
      */
     @Transactional
     public Project createProject(Project project, List<CountryBudget> budgets, List<University> universities) {
         
-        // 1. Salveaza Proiectul
+        // salveaza Proiectul
         Project savedProject = projectRepository.save(project);
 
-        // 2. Salveaza Bugetele si leaga-le de proiect
+        // salveaza Bugetele si leaga-le de proiect
         for (CountryBudget budget : budgets) {
-            // Validare (Regula 95)
             if (budget.getCapTotalEur() <= 0) {
                 throw new RuntimeException("Bugetul trebuie sa fie pozitiv");
             }
@@ -55,9 +53,8 @@ public class ProjectService {
             countryBudgetRepository.save(budget);
         }
 
-        // 3. Salveaza Universitatile si leaga-le de bugetul tarii
+        // salveaza universitatile si leaga de bugetul tarii
         for (University uni : universities) {
-            // Gaseste bugetul tarii (ex: "Spania")
             CountryBudget budget = countryBudgetRepository.findByCountry(uni.getCountry())
                     .orElseThrow(() -> new RuntimeException("Buget negasit pt tara " + uni.getCountry()));
             
@@ -65,20 +62,20 @@ public class ProjectService {
             universityRepository.save(uni);
         }
 
-        // 4. Valideaza si activeaza proiectul (Regula 25)
+        // valideaza si activeaza proiectul
         // savedProject.setStatus(Status.ACTIVE);
         return projectRepository.save(savedProject);
     }
 
     /**
-     * UC2: Creaza o activitate de proiect
+     * creeaza activitate de proiect
      */
     public Activity createActivity(Activity activity) {
         return activityRepository.save(activity);
     }
 
     /**
-     * UC2: Aloca un user la o activitate
+     * aloca user la o activitate
      */
     public Assignment assignUserToActivity(Assignment assignment) {
         return assignmentRepository.save(assignment);

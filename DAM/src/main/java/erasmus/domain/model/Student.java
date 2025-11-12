@@ -13,7 +13,6 @@ public class Student {
     @Id
     private String id;
 
-    // atributele din uml
     private String lastName;
     private String firstName;
     private String cnp;
