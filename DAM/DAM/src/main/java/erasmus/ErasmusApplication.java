@@ -3,7 +3,7 @@ package erasmus;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication // Asta porneste toata magia Spring
+@SpringBootApplication // Start app
 public class ErasmusApplication {
 
     public static void main(String[] args) {
