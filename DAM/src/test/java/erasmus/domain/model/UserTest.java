@@ -1,10 +1,10 @@
 package erasmus.domain.model;
 
+import erasmus.commons.enums.Role;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Set;
-import erasmus.commons.enums.Role;
 
 @Data
 @Entity

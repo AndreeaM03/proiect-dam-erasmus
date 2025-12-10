@@ -2,7 +2,6 @@ package erasmus.domain.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import erasmus.commons.enums.Status;
 
 @Data
 @Entity

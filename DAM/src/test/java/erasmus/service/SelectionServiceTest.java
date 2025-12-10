@@ -4,7 +4,6 @@ import erasmus.domain.model.Application;
 import erasmus.domain.model.Interview;
 import erasmus.domain.repository.ApplicationRepository;
 import erasmus.domain.repository.InterviewRepository;
-import erasmus.commons.enums.Status;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package erasmus.service;
 
-import erasmus.domain.model.MobilityBudget;
 import erasmus.commons.enums.MobilityType;
+import erasmus.domain.model.MobilityBudget;
 
 // Importuri necesare pentru JUnit 5 (din pom.xml)
 import org.junit.jupiter.api.Test;

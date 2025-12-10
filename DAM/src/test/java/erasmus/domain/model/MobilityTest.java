@@ -1,11 +1,11 @@
 package erasmus.domain.model;
 
+import erasmus.commons.enums.MobilityType;
+import erasmus.commons.enums.Status;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
-import erasmus.commons.enums.Status;
-import erasmus.commons.enums.MobilityType;
 
 @Data
 @Entity

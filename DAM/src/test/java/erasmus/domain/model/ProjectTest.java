@@ -1,10 +1,9 @@
 package erasmus.domain.model;
 
 // Folosim Jakarta pt Spring Boot 3+ (JPA)
+import erasmus.commons.enums.Status;
 import jakarta.persistence.*;
 import lombok.Data;
-
-import erasmus.commons.enums.Status;
 
 import java.util.Date;
 import java.util.Set;
